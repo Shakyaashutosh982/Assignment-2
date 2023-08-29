@@ -39,5 +39,7 @@ public class RegexRepositoryImplementation implements RegexRepository{
         result.forEach(doc ->books.add(mongoConverter.read(Author.class,doc)));
         return books;
 
+//        return null;
+
     }
 }

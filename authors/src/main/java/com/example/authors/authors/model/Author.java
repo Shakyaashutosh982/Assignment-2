@@ -1,6 +1,7 @@
 package com.example.authors.authors.model;
 
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collections;
@@ -8,16 +9,16 @@ import java.util.Collections;
 @Document(collection = "author")
 public class Author {
 
-    private int _id;
+    private int id;
     private String name;
-    private Address address;
+    private String address;
 
     public int getId() {
-        return _id;
+        return id;
     }
 
-    public void setId(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,11 +29,11 @@ public class Author {
         this.name = name;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -42,7 +43,7 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "id=" + _id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", address=" + address +
                 '}';
