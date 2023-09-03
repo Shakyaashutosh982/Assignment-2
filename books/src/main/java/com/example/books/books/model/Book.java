@@ -41,7 +41,11 @@ public class Book {
         this.genere = genere;
     }
 
-    public Book() {
+    public Book(int id, int copyAvailable, int authorId, String genere) {
+        this.id = id;
+        this.copyAvailable = copyAvailable;
+        this.authorId = authorId;
+        this.genere = genere;
     }
 
     @Override

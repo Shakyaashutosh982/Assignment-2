@@ -4,6 +4,7 @@ package com.example.books.books.booksController;
 import com.example.books.books.model.Book;
 import com.example.books.books.repository.BookRepository;
 import com.example.books.books.repository.ParamRepository;
+import com.example.books.books.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    BookRepository bookRepository;
-
-    @Autowired
-    ParamRepository paramRepository;
+    BookService bookService;
 
     @RequestMapping(value = "/")
     public String redirect(HttpServletResponse response) throws IOException{
@@ -26,30 +24,30 @@ public class BookController {
     }
 
     @GetMapping(value="/books")
-    public List<Book> getALlBooks() throws IOException {
-        return bookRepository.findAll();
+    public List<Book> getAllBooks() throws IOException {
+        return bookService.giveAllBooks();
     }
 
     @GetMapping(value = "/book/{text}")
     public List<Book> getAllBookByGenere(@PathVariable String text) throws IOException{
-        return paramRepository.findByParam(text);
+        return bookService.giveAllBookByGenere(text);
     }
 
     @GetMapping(value = "/book/{text}/{copies}")
     public List<Book> getAllBookByGenereAndCopies(@PathVariable String text,@PathVariable int copies) throws IOException{
-        return paramRepository.findByParamAndCopies(text,copies);
+        return bookService.giveAllBookByGenereAndCopies(text,copies);
     }
 
     @PostMapping(value = "/book")
     public Book addBook(@RequestBody Book book){
 
-        return bookRepository.save(book);
+        return bookService.createBook(book);
     }
 
 
     @GetMapping(value = "/author/{id}")
-    public List<Book> getAllBookByGenere(@PathVariable int id) throws IOException{
-        return paramRepository.findById(id);
+    public List<Book> getAllBookById(@PathVariable int id) throws IOException{
+        return bookService.giveAllBookById(id);
     }
 
 }
