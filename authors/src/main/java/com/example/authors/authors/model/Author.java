@@ -37,7 +37,10 @@ public class Author {
         this.address = address;
     }
 
-    public Author() {
+    public Author(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
     }
 
     @Override
